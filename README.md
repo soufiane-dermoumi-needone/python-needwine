@@ -35,8 +35,10 @@ Il y a 2 types d'utilisateurs :
 | 4        | En tant qu'utilisateur, je souhaite pouvoir ajouter un nouveau vin. |
 | 5        | En tant qu'utilisateur, je souhaite avoir accès à la liste des avis. |
 | 6        | En tant qu'utilisateur, je souhaite pouvoir ajouter un avis. |
-| 7        | En tant que modérateur, je souhaite pouvoir supprimer un vin |
-| 8        | En tant que modérateur, je souhaite pouvoir supprimer un avis |
+| 7        | En tant que modérateur, je souhaite pouvoir ajouter un utilisateur |
+| 8        | En tant que modérateur, je souhaite pouvoir supprimer un utilisateur |
+| 9        | En tant que modérateur, je souhaite pouvoir supprimer un vin |
+| 10       | En tant que modérateur, je souhaite pouvoir supprimer un avis |
 
 #### US 1 -   En tant qu'utilisateur, je souhaite pouvoir me connecter et me déconnecter à l'application.
 
