@@ -5,9 +5,10 @@ from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
 
 from app.main import create_app, db
+from app import blueprint
 
 app = create_app(os.getenv('NEEDWINE_ENV') or 'dev')
-
+app.register_blueprint(blueprint)
 app.app_context().push()
 
 manager = Manager(app)
@@ -25,7 +26,7 @@ def run():
 @manager.command
 def test():
     """Runs the unit tests."""
-    tests = unittest.TestLoader().discover('app/test', pattern='test*.py')
+    tests = unittest.TestLoader().discover('test', pattern='test*.py')
     result = unittest.TextTestRunner(verbosity=2).run(tests)
     if result.wasSuccessful():
         return 0
