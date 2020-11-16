@@ -33,3 +33,7 @@ def get_a_user(id):
 def save_changes(data):
     db.session.add(data)
     db.session.commit()
+
+def delete(id):
+    User.query.filter_by(id=id).delete()
+    db.session.commit()

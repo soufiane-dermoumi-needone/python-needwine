@@ -1,6 +1,6 @@
 from app.main import db
 from app.main.model.wine import Wine
-
+from sqlalchemy import desc
 
 def save_new_wine(data):
     wine = Wine.query.filter_by(year=data['year'], name=data['name']).first()
@@ -18,9 +18,13 @@ def save_new_wine(data):
         return response_object, 409
 
 
-def get_all_wines():
-    return Wine.query.all()
-
+def get_all_wines(args=None):
+    if args.page is None and args.item is None:
+        return Wine.query.all()
+    else:
+        return Wine.query.order_by(Wine.id).paginate(args.page,args.item).items
+        
+        
 
 def get_a_wine(id):
     return Wine.query.filter_by(id=id).first()
@@ -28,4 +32,8 @@ def get_a_wine(id):
 
 def save_changes(data):
     db.session.add(data)
+    db.session.commit()
+
+def delete(id):
+    Wine.query.filter_by(id=id).delete()
     db.session.commit()

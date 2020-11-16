@@ -2,7 +2,7 @@ from flask import request
 from flask_restplus import Resource
 
 from ..util.dto import UserDto
-from ..service.user_service import save_new_user, get_all_users, get_a_user
+from ..service.user_service import save_new_user, get_all_users, get_a_user, delete
 
 api = UserDto.api
 _user = UserDto.user
@@ -25,16 +25,20 @@ class UserList(Resource):
         return save_new_user(data=data)
 
 
-@api.route('/<public_id>')
-@api.param('public_id', 'The user identifier')
+@api.route('/<id>')
+@api.param('id', 'The user identifier')
 @api.response(404, 'User not found')
 class User(Resource):
     @api.doc('get a user')
     @api.marshal_with(_user)
-    def get(self, public_id):
+    def get(self, id):
         """get a user by its identifier"""
-        user = get_a_user(public_id)
+        user = get_a_user(id)
         if not user:
             api.abort(404)
         else:
             return user
+    @api.doc('delete a user')
+    def delete(self, id):
+        delete(id)
+    

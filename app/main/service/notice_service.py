@@ -32,3 +32,7 @@ def get_a_notice(id):
 def save_changes(data):
     db.session.add(data)
     db.session.commit()
+
+def delete(id):
+    Notice.query.filter_by(id=id).delete()
+    db.session.commit()

@@ -2,7 +2,7 @@ from flask import request
 from flask_restplus import Resource
 
 from ..util.dto import NoticeDto
-from ..service.notice_service import save_new_notice, get_a_notice, get_all_notices
+from ..service.notice_service import save_new_notice, get_a_notice, get_all_notices, delete
 
 api = NoticeDto.api
 _notice = NoticeDto.notice
@@ -38,3 +38,7 @@ class Notice(Resource):
             api.abort(404)
         else:
             return notice
+    @api.doc('delete a notice')
+    def delete(self, id):
+        """delete a notice by id"""
+        delete(id)
