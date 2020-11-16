@@ -9,3 +9,4 @@ class Wine(db.Model):
     year = db.Column(db.String)
     type_id = db.Column(db.Integer, db.ForeignKey('wine_type.id'))
     name = db.Column(db.String)
+    wine_type = db.relationship('WineType', foreign_keys='Wine.type_id')

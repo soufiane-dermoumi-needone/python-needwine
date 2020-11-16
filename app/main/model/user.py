@@ -11,6 +11,7 @@ class User(db.Model):
     lastname = db.Column(db.String)
     password_hash = db.Column(db.String)
     role_id = db.Column(db.Integer, db.ForeignKey('role.id'))
+    role = db.relationship('Role', foreign_keys='User.role_id')
 
     @property
     def password(self):

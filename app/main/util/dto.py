@@ -18,7 +18,6 @@ class UserDto:
                     attribute='role.label', required=True, description='role label'
                 )
             },
-            'public_id': fields.String(description='user Identifier'),
         },
     )
 

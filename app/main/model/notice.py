@@ -9,3 +9,5 @@ class Notice(db.Model):
     wine_id = db.Column(db.Integer, db.ForeignKey('wine.id'))
     description = db.Column(db.String)
     date = db.Column(db.Date)
+    user = db.relationship('User', foreign_keys='Notice.user_id')
+    wine = db.relationship('Wine', foreign_keys='Notice.wine_id')
