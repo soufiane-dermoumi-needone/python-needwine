@@ -1,7 +1,7 @@
 from .. import db
 
 
-class Notice(db.model):
+class Notice(db.Model):
     __tablename__ = 'notice'
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)

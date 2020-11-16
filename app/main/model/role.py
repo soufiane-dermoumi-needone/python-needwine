@@ -1,7 +1,7 @@
 from .. import db
 
 
-class Role(db.model):
+class Role(db.Model):
 
     __tablename__ = 'role'
 
