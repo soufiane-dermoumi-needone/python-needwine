@@ -8,7 +8,7 @@ api = UserDto.api
 _user = UserDto.user
 
 
-@api.route('/')
+@api.route('')
 class UserList(Resource):
     @api.doc('list_of_registered_users')
     @api.marshal_list_with(_user, envelope='data')
@@ -18,7 +18,7 @@ class UserList(Resource):
 
     @api.response(201, 'User successfully created')
     @api.doc('create a new user')
-    @api.expect(_user, validate=True)
+    @api.expect(_user, validate=False)
     def post(self):
         """Creates a new user"""
         data = request.json

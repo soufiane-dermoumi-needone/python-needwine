@@ -7,7 +7,7 @@ from flask_script import Manager
 from app.main import create_app, db
 from app import blueprint
 
-from app.main.model import notice, user, role, wine, wine_type
+from app.main.model import notice, user, role, wine, wine_type, blacklist
 
 app = create_app(os.getenv('NEEDWINE_ENV') or 'dev')
 app.register_blueprint(blueprint)

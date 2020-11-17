@@ -86,3 +86,14 @@ class NoticeDto:
             'date': fields.Date(required=True, description='notice date')
         }
     )
+
+
+class AuthDto:
+    api = Namespace('auth', description='auth related operation')
+    user_auth = api.model(
+        'auth',
+        {
+            'email': fields.String(required=True, description='email'),
+            'password': fields.String(required=True, description='user password'),
+        }
+    )
