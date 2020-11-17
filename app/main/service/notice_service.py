@@ -21,8 +21,11 @@ def save_new_notice(data):
         return response_object, 409
 
 
-def get_all_notices():
-    return Notice.query.all()
+def get_all_notices(args=None):
+    if args.page is None and args.item is None:
+        return Notice.query.all()
+    else:
+        return Notice.query.order_by(Notice.id).paginate(args.page,args.item).items
 
 
 def get_a_notice(id):

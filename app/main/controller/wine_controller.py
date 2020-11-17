@@ -7,7 +7,7 @@ from ..service.wine_service import save_new_wine, get_all_wines, get_a_wine, del
 api = WineDto.api
 _wine = WineDto.wine
 
-@api.route('/')
+@api.route('')
 @api.route('?page=<page>&item=<item>')
 @api.param('page', 'page indice')
 @api.param('item', 'number of item per page')
@@ -25,7 +25,7 @@ class WineList(Resource):
     
     @api.response(201, 'Wine successfully created')
     @api.doc('created a new wine')
-    @api.expect(_wine, validate=True)
+    @api.expect(_wine, validate=False)
     def post(self):
         """Creates a new wine"""
         data = request.json
